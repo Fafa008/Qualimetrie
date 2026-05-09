@@ -8,9 +8,12 @@ Route::get('/', function () {
     return view('mobile');
 });
 Route::post('/calculate', function (Request $request) {
-    $controller = new MobileController();
+    $controller = new MobileController(new MobileBillCalculator());
     $response = $controller->calculateBill($request);
     $data = $response->getData();
 
     return view('mobile', ['total' => $data->total]);
 });
+
+Route::post('/api/mobile-bill', [MobileController::class, 'calculateBill']);
+
