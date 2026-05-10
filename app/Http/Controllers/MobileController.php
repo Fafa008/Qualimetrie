@@ -59,7 +59,7 @@ class MobileController extends Controller
             'dataUsed' => $dataUsed,
             'dataNonEU_MB' => $dataNonEU,
             'anciennete' => $anciennete,
-            'isEtudiant' => $isEtudiant,
+            'isEtudiant' => $request->has('isEtudiant'),
             'total' => $total
         ]);
 
